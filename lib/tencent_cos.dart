@@ -1,9 +1,9 @@
 import 'dart:async';
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 class TencentCos {
-  static const MethodChannel _channel = const MethodChannel('tencent_cos');
+  static const MethodChannel _channel = const MethodChannel('openflutter.club/tencent_cos');
 
   static void uploadByFile(
       String region,
@@ -12,7 +12,7 @@ class TencentCos {
       String secretId,
       String secretKey,
       String sessionToken,
-      expiredTime,
+      String expiredTime,
       String cosPath,
       String localPath) {
     _channel.invokeMethod('TencentCos.uploadFile', {
@@ -26,6 +26,20 @@ class TencentCos {
       'cosPath': cosPath,
       'localPath': localPath,
     });
+  }
+
+  static syncUpload({
+    @required String region,
+    @required  String appid,
+    @required String bucket,
+    @required String secretId,
+    @required String secretKey,
+    @required String sessionToken,
+    @required String expiredTime,
+    @required String cosPath,
+    @required String localPath
+}){
+
   }
 
   static void setMethodCallHandler(Future<dynamic> handler(MethodCall call)) {
